@@ -1,21 +1,17 @@
-name: CI Test
+name: Hello GitHub Actions
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main  # mainブランチにpushされたら実行
 
 jobs:
-  build:
+  hello_job:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: チェックアウトリポジトリ
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Node.js のセットアップ
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: npm install & test
-        run: |
-          npm install
-          npm test
+      - name: Run a simple command
+        run: echo "Hello GitHub Actions!"
