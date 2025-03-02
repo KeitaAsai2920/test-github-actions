@@ -1,0 +1,21 @@
+name: CI Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: チェックアウトリポジトリ
+        uses: actions/checkout@v4
+
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: npm install & test
+        run: |
+          npm install
+          npm test
